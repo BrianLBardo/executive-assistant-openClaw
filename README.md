@@ -5,12 +5,12 @@ Based on the Datacamp webinar of the same name, this is my first attempt at crea
 
 ```text
 .
-└── meeting-prep/
-└── action-items/
-└── email-drafting/
-└── executive-digest/
+├── config/
+├── email-drafting/
+├── humanizer/
+├── meeting-prep/
+├── todoist-action-items/
 └── todoist-due-drafts/
-└── humannizer/
 ```
 
 ## Skills
