@@ -7,14 +7,14 @@ description: "Extract action items from today's Granola/Grain meetings, create T
 ## Config — read before starting
 Read `../config/user.json` (resolves to `~/executive-assistant-skills/config/user.json`).
 Extract and use throughout:
-- `name`, `full_name` — to identify your action items in meeting notes (e.g. "Gonto (Martin)")
+- `name`, `full_name` — to identify your action items in meeting notes
 - `whatsapp` — for result delivery
 - `workspace` — absolute path to OpenClaw workspace
 
 Do not proceed until you have these values.
 
 ## Debug Logging (MANDATORY)
-Read `../config/DEBUG_LOGGING.md` for the full convention. Use `python3 {user.workspace}/scripts/skill_log.py action-items <level> "<message>" ['<details>']` at every key step. Log BEFORE and AFTER every external call (gog, mcporter, todoist-cli). On any error, log the full command and stderr before continuing.
+Read `../config/bebug_logging.md` for the full convention. Use `python3 {user.workspace}/scripts/skill_log.py action-items <level> "<message>" ['<details>']` at every key step. Log BEFORE and AFTER every external call (gog, mcporter, todoist-cli). On any error, log the full command and stderr before continuing.
 
 ## Steps
 
@@ -24,8 +24,8 @@ Before querying Granola, get today's actual meetings from BOTH calendars to know
 python3 {user.workspace}/scripts/skill_log.py action-items INFO "Starting action-items run"
 
 # Get today's date in YYYY-MM-DD and tomorrow's
-TODAY=$(date -u -d "$(TZ=America/Argentina/Buenos_Aires date +%Y-%m-%d)" +%Y-%m-%d)
-TOMORROW=$(date -u -d "$(TZ=America/Argentina/Buenos_Aires date -d '+1 day' +%Y-%m-%d)" +%Y-%m-%d)
+TODAY=$(date -u -d "$(TZ=Denmark date +%Y-%m-%d)" +%Y-%m-%d)
+TOMORROW=$(date -u -d "$(TZ=Denmark date -d '+1 day' +%Y-%m-%d)" +%Y-%m-%d)
 
 # Check BOTH calendars
 gog --account {user.primary_email} --no-input calendar list primary --from "${TODAY}T00:00:00-03:00" --to "${TOMORROW}T00:00:00-03:00" --json 2>&1
@@ -67,7 +67,7 @@ source {user.workspace}/.env && todoist-cli add "<actionable title>" --descripti
 
 **Task description MUST include:**
 - Meeting name (e.g. "Braintrust Weekly")
-- Meeting date and time (e.g. "Wed Mar 5, 15:00 ART")
+- Meeting date and time (e.g. "Wed Mar 5, 15:00 CERT")
 - Who requested / context
 - Granola citation link
 
