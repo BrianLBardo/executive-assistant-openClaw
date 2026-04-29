@@ -33,7 +33,7 @@ Read `../config/DEBUG_LOGGING.md` for the full convention. Use `python3 {user.wo
 ### External meetings (attendees outside your email domains)
 Full research brief (email context, Granola, LinkedIn, company research) — see below.
 
-### Internal meetings (all attendees from your email domains: hypergrowthpartners.com, growth.li)
+### Internal meetings (all attendees from your email domains)
 Lighter brief — no LinkedIn/company research needed, but still include:
 - Attendee list
 - Granola context from previous instances of this recurring meeting
