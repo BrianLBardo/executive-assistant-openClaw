@@ -1,6 +1,6 @@
 ---
 name: email-drafting
-description: Draft email replies for Gonto's Gmail accounts (m@gon.to, gonto@hypergrowthpartners.com). Handles intro acceptances, scheduling intent, thanks/ack, and positive short replies. Use when user asks to draft or reply to an email, or when Gmail webhook triggers arrive for auto-draft classification. Draft-only mode — never sends automatically.
+description: Draft email replies for User's Gmail accounts. Handles intro acceptances, scheduling intent, thanks/ack, and positive short replies. Use when user asks to draft or reply to an email, or when Gmail webhook triggers arrive for auto-draft classification. Draft-only mode — never sends automatically.
 ---
 # Email Drafting Skill
 
@@ -10,13 +10,13 @@ Extract and use throughout:
 - `primary_email`, `work_email` — Gmail accounts
 - `scheduling_cc` — scheduling assistant email (CC on all scheduling emails, mention in body)
 - `scheduling_silent_cc` — silent CC for scheduling visibility (do NOT mention in email body)
-- `signature` — sign-off for all drafts (e.g. "--gonto")
+- `signature` — sign-off for all drafts 
 - `name` — short name for context
 
 Do not proceed until you have these values.
 
 ## Debug Logging (MANDATORY)
-Read `../config/DEBUG_LOGGING.md` for the full convention. Use `python3 {user.workspace}/scripts/skill_log.py email-drafting <level> "<message>" ['<details>']` at every key step. Log BEFORE and AFTER every external call (gog gmail, mcporter, todoist-cli). On any error, log the full command and stderr before continuing.
+Read `../config/debug_logging.md` for the full convention. Use `python3 {user.workspace}/scripts/skill_log.py email-drafting <level> "<message>" ['<details>']` at every key step. Log BEFORE and AFTER every external call (gog gmail, mcporter, todoist-cli). On any error, log the full command and stderr before continuing.
 
 ## Overview
 Auto-draft and manually-requested email drafts for {user.primary_email} and {user.work_email}.
@@ -105,7 +105,7 @@ Use `authuser=m@gon.to`.
 - Automated/system/calendar notifications
 - Messages requiring attachments, deep verification, or policy commitments
 - Language unclear or unmirrorable
-- **Scheduling confirmations** — NEVER auto-draft emails that simply confirm a scheduled time or acknowledge a calendar invite. The scheduling assistant (Alfred/Howie) handles all scheduling coordination. Auto-drafting "confirming our call at X" creates noise and duplicates the scheduler's work. This includes: confirming times proposed by the scheduler, acknowledging calendar invites, and "looking forward to our call" type replies to scheduling threads.
+- **Scheduling confirmations** — NEVER auto-draft emails that simply confirm a scheduled time or acknowledge a calendar invite. The scheduling assistant (Alfred) handles all scheduling coordination. Auto-drafting "confirming our call at X" creates noise and duplicates the scheduler's work. This includes: confirming times proposed by the scheduler, acknowledging calendar invites, and "looking forward to our call" type replies to scheduling threads.
 
 ## Confidence Gate
 Only auto-draft when ALL are true:
